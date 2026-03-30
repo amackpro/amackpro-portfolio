@@ -1,0 +1,13 @@
+{
+  "name": "amackpro-portfolio",
+  "version": "1.0.0",
+  "description": "Portfolio website for Prajwal Kumar",
+  "type": "module",
+  "scripts": {
+    "dev": "npx serve .",
+    "build": "echo 'Ready for Vercel'"
+  },
+  "dependencies": {
+    "gsap": "^3.12.5"
+  }
+}

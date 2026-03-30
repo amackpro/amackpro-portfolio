@@ -1,187 +1,435 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Prajwal Kumar | Portfolio</title>
-  <!-- Tailwind CSS CDN for rapid styling -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <!-- Font Awesome for social icons -->
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-  <style>
-    body { font-family: 'Poppins', sans-serif; }
-    html { scroll-behavior: smooth; }
-    /* Timeline custom styles */
-    .timeline { position: relative; }
-    .timeline::before { content: ''; position: absolute; left: 0.5rem; top: 0; width: 2px; height: 100%; background: #4B5563; }
-    .timeline-item { position: relative; padding-left: 2rem; }
-    .timeline-item::before { content: ''; position: absolute; left: -0.25rem; top: 0.5rem; width: 10px; height: 10px; background: #4F46E5; border-radius: 50%; }
-  </style>
-  <script>
-    // Dark mode toggle
-    document.addEventListener('DOMContentLoaded', () => {
-      const themeToggle = document.getElementById('theme-toggle');
-      const userPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-      const currentTheme = localStorage.getItem('theme') || (userPrefersDark ? 'dark' : 'light');
-      setTheme(currentTheme);
-
-      themeToggle.addEventListener('click', () => {
-        const newTheme = document.documentElement.classList.contains('dark') ? 'light' : 'dark';
-        setTheme(newTheme);
-      });
-
-      function setTheme(theme) {
-        if (theme === 'dark') {
-          document.documentElement.classList.add('dark');
-          themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-        } else {
-          document.documentElement.classList.remove('dark');
-          themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-        }
-        localStorage.setItem('theme', theme);
-      }
-    });
-  </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prajwal Kumar | Systems Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
-<body class="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200">
-  <!-- Header / Navbar -->
-  <header class="fixed w-full bg-white/70 dark:bg-gray-900/70 backdrop-blur border-b border-gray-200 dark:border-gray-700 z-50">
-    <div class="container mx-auto flex items-center justify-between py-3 px-4">
-      <h1 class="text-xl font-semibold"><a href="#home">Prajwal Kumar</a></h1>
-      <nav class="space-x-4 hidden md:block">
-        <a href="#about" class="hover:text-indigo-600">About</a>
-        <a href="#education" class="hover:text-indigo-600">Education</a>
-        <a href="#experience" class="hover:text-indigo-600">Experience</a>
-        <a href="#skills" class="hover:text-indigo-600">Skills</a>
-        <a href="#contact" class="hover:text-indigo-600">Contact</a>
-      </nav>
-      <button id="theme-toggle" class="text-xl p-2 rounded-md hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors md:ml-4" aria-label="Toggle dark mode">
-        <i class="fas fa-moon"></i>
-      </button>
-    </div>
-  </header>
-
-  <!-- Hero Section -->
-  <section id="home" class="h-screen flex items-center justify-center bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 text-white text-center relative">
-    <div class="absolute inset-0 bg-black/40 dark:bg-black/50"></div>
-    <div class="relative z-10 max-w-3xl p-6">
-      <h2 class="text-4xl md:text-6xl font-bold mb-4">Hello, I'm <span class="text-yellow-300">Prajwal Kumar</span></h2>
-      <p class="text-lg md:text-2xl mb-6">Custom ROM & Kernel Developer | Computer Science Enthusiast | MCA Student</p>
-      <a href="#contact" class="inline-block px-8 py-3 bg-yellow-300 text-gray-900 font-semibold rounded-full hover:bg-yellow-400 transition">Get In Touch</a>
-    </div>
-  </section>
-
-  <!-- About Section -->
-  <section id="about" class="container mx-auto px-4 py-20">
-    <h2 class="text-3xl font-semibold mb-6">About Me</h2>
-    <p class="leading-relaxed text-lg">
-      I'm a passionate developer focused on optimizing Android experiences for Xiaomi devices through custom ROM and kernel work. Currently pursuing my MCA, I enjoy solving complex technical challenges and contributing to open-source projects. Beyond code, you'll find me immersed in rock, indie, and EDM tracks, or catching up on the latest anime series.
-    </p>
-  </section>
-
-  <!-- Education Section -->
-  <section id="education" class="bg-gray-100 dark:bg-gray-800 py-20">
-    <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-semibold mb-10">Education</h2>
-      <div class="timeline space-y-10">
-        <div class="timeline-item">
-          <h3 class="text-xl font-semibold">MCA (2024 – 2026)</h3>
-          <p class="text-sm mb-1">Dr. A.P.J. Abdul Kalam Technical University</p>
-          <p class="text-gray-700 dark:text-gray-300">Master of Computer Applications – Ongoing</p>
+<body>
+    <div class="loader" id="loader">
+        <div class="loader-text">LOADING</div>
+        <div class="loader-bar">
+            <div class="loader-progress"></div>
         </div>
-        <div class="timeline-item">
-          <h3 class="text-xl font-semibold">B.Sc. Computer Science (2020 – 2024)</h3>
-          <p class="text-sm mb-1">Chaudhary Charan Singh University, Meerut</p>
-          <p class="text-gray-700 dark:text-gray-300">Graduated with core focus on systems programming and software engineering.</p>
-        </div>
-      </div>
     </div>
-  </section>
 
-  <!-- Experience Section -->
-  <section id="experience" class="container mx-auto px-4 py-20">
-    <h2 class="text-3xl font-semibold mb-10">Personal Experience</h2>
-    <div class="space-y-8">
-      <div class="border-l-4 border-indigo-500 pl-6">
-        <h3 class="text-2xl font-semibold mb-2">Custom ROM & Kernel Development</h3>
-        <p class="mb-2">Optimized Android experience for Xiaomi devices (Redmi Note 7 Pro, Mi 11X, Poco X3/Pro, Poco F4/F6) by tuning Qualcomm Snapdragon-based kernels, scheduler parameters, and power management.</p>
-        <ul class="list-disc pl-5">
-          <li>Implemented custom kernel configurations boosting battery life by up to 15%.</li>
-          <li>Fine‑tuned CPU/GPU schedulers for smoother gaming performance.</li>
-          <li>Collaborated with open‑source communities to upstream patches and improvements.</li>
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-dot" id="cursor-dot"></div>
+
+    <canvas id="particles-canvas"></canvas>
+    <div class="grid-bg"></div>
+
+    <nav id="navbar">
+        <div class="logo">AMACK</div>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="#home">HOME</a></li>
+            <li><a href="#about">ABOUT</a></li>
+            <li><a href="#skills">SKILLS</a></li>
+            <li><a href="#projects">PROJECTS</a></li>
+            <li><a href="#contact">CONTACT</a></li>
         </ul>
-      </div>
-      <div class="border-l-4 border-indigo-500 pl-6">
-        <h3 class="text-2xl font-semibold mb-2">Bash Scripting & Automation</h3>
-        <p>Created robust Bash scripts to automate device flashing, build pipelines, and system diagnostics for Android development workflows.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Skills Section -->
-  <section id="skills" class="bg-gray-100 dark:bg-gray-800 py-20">
-    <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-semibold mb-10">Skills</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div class="p-6 bg-white dark:bg-gray-900 rounded-lg shadow">
-          <h3 class="text-xl font-semibold mb-2">Proficient In</h3>
-          <ul class="list-disc list-inside space-y-1">
-            <li>C, Java</li>
-            <li>Bash & Shell Scripting</li>
-            <li>Kernel Development</li>
-            <li>AOSP & Android Build Systems</li>
-          </ul>
+        <div class="menu-toggle" id="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
-        <div class="p-6 bg-white dark:bg-gray-900 rounded-lg shadow">
-          <h3 class="text-xl font-semibold mb-2">Familiar With</h3>
-          <ul class="list-disc list-inside space-y-1">
-            <li>Python, C++, Rust</li>
-            <li>HTML, CSS, JavaScript</li>
-            <li>MySQL</li>
-          </ul>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="floating-elements">
+            <i class="floating-icon fab fa-rust"></i>
+            <i class="floating-icon fas fa-code"></i>
+            <i class="floating-icon fab fa-android"></i>
+            <i class="floating-icon fab fa-linux"></i>
+            <i class="floating-icon fab fa-github"></i>
         </div>
-        <div class="p-6 bg-white dark:bg-gray-900 rounded-lg shadow">
-          <h3 class="text-xl font-semibold mb-2">Soft Skills</h3>
-          <ul class="list-disc list-inside space-y-1">
-            <li>Problem‑Solving</li>
-            <li>Attention to Detail</li>
-            <li>Collaboration & Teamwork</li>
-          </ul>
+
+        <p class="hero-subtitle">WELCOME TO MY DIGITAL WORLD</p>
+        <h1 class="hero-title">
+            <span class="gradient-text glitch" data-text="Prajwal Kumar">Prajwal Kumar</span>
+        </h1>
+        <p class="hero-description">
+            Systems Developer specializing in Android Low-Level Development, 
+            Kernel Engineering, and High-Performance Systems Programming.
+        </p>
+        
+        <div class="typing-container">
+            <div class="typing-text">
+                Android Kernel Developer<br>
+                Rust Enthusiast<br>
+                .NET Architect<br>
+                Open Source Contributor
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- Hobbies Section -->
-  <section class="container mx-auto px-4 py-20">
-    <h2 class="text-3xl font-semibold mb-6">Hobbies</h2>
-    <p class="text-lg">Listening to Rock/Indie/EDM/Techno music, watching anime, and reading books.</p>
-  </section>
+        <div class="hero-buttons">
+            <a href="#projects" class="btn btn-primary">VIEW PROJECTS</a>
+            <a href="#contact" class="btn btn-secondary">GET IN TOUCH</a>
+        </div>
 
-  <!-- Contact Section -->
-  <section id="contact" class="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white py-20">
-    <div class="container mx-auto px-4 text-center">
-      <h2 class="text-3xl font-semibold mb-6">Get in Touch</h2>
-      <p class="mb-8">Feel free to reach out for collaboration or just a friendly chat!</p>
-      <div class="flex justify-center space-x-6 text-2xl">
-        <a href="https://github.com/amackpro" target="_blank" aria-label="GitHub" class="hover:text-gray-300"><i class="fab fa-github"></i></a>
-        <a href="https://linkedin.com/in/prajwal-kumar-62b03191" target="_blank" aria-label="LinkedIn" class="hover:text-gray-300"><i class="fab fa-linkedin"></i></a>
-        <a href="https://x.com/amack766" target="_blank" aria-label="Twitter/X" class="hover:text-gray-300"><i class="fab fa-x-twitter"></i></a>
-        <a href="https://t.me/amack766" target="_blank" aria-label="Telegram" class="hover:text-gray-300"><i class="fab fa-telegram"></i></a>
-      </div>
-    </div>
-  </section>
+        <div class="scroll-indicator">
+            <span class="scroll-text">SCROLL DOWN</span>
+            <div class="scroll-mouse">
+                <div class="scroll-wheel"></div>
+            </div>
+        </div>
+    </section>
 
-  <!-- Footer -->
-  <footer class="py-6 bg-gray-900 text-gray-400 text-center text-sm">
-    © <span id="year"></span> Prajwal Kumar. All rights reserved.
-  </footer>
+    <section class="about" id="about">
+        <div class="section-header">
+            <span class="section-number">01</span>
+            <h2 class="section-title">ABOUT ME</h2>
+            <p class="section-subtitle">THE PERSON BEHIND THE CODE</p>
+        </div>
 
-  <script>
-    // Dynamically set current year in footer
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+        <div class="about-content">
+            <div class="about-image-container">
+                <div class="about-image">
+                    <div class="about-glow"></div>
+                    <div class="about-image-inner">
+                        <i class="fas fa-user-astronaut"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="about-text">
+                <h3>Masters in Computer Application</h3>
+                <p>
+                    A passionate systems developer from India with a deep focus on 
+                    Android Low-Level Development and Kernel Engineering. I thrive in 
+                    the realm where hardware meets software, crafting solutions that 
+                    push the boundaries of performance and efficiency.
+                </p>
+                <p>
+                    Currently diving deep into Kernel Internals and Android HAL, building 
+                    tools and contributing to open source projects that make a real 
+                    impact in the developer community.
+                </p>
+
+                <div class="about-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">38+</div>
+                        <div class="stat-label">REPOSITORIES</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">13</div>
+                        <div class="stat-label">FOLLOWERS</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">5</div>
+                        <div class="stat-label">STARS</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="skills" id="skills">
+        <div class="section-header">
+            <span class="section-number">02</span>
+            <h2 class="section-title">TECH STACK</h2>
+            <p class="section-subtitle">MY WEAPONS OF CHOICE</p>
+        </div>
+
+        <div class="skills-grid">
+            <div class="skill-card">
+                <i class="fas fa-microchip skill-icon"></i>
+                <h3 class="skill-title">Low-Level Development</h3>
+                <p style="color: var(--text-dim); line-height: 1.6;">
+                    Android Kernel Development, HAL Implementation, Driver Development, 
+                    and Systems Programming.
+                </p>
+                <div class="skill-tags">
+                    <span class="skill-tag">C</span>
+                    <span class="skill-tag">Rust</span>
+                    <span class="skill-tag">Linux Kernel</span>
+                    <span class="skill-tag">Android HAL</span>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <i class="fas fa-desktop skill-icon"></i>
+                <h3 class="skill-title">Desktop Development</h3>
+                <p style="color: var(--text-dim); line-height: 1.6;">
+                    Cross-platform desktop applications with modern frameworks and 
+                    MVVM architecture.
+                </p>
+                <div class="skill-tags">
+                    <span class="skill-tag">C#</span>
+                    <span class="skill-tag">.NET</span>
+                    <span class="skill-tag">WPF</span>
+                    <span class="skill-tag">Tauri</span>
+                    <span class="skill-tag">Rust</span>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <i class="fab fa-android skill-icon"></i>
+                <h3 class="skill-title">Mobile Development</h3>
+                <p style="color: var(--text-dim); line-height: 1.6;">
+                    Native Android application development with Kotlin and modern 
+                    architecture patterns.
+                </p>
+                <div class="skill-tags">
+                    <span class="skill-tag">Kotlin</span>
+                    <span class="skill-tag">Android SDK</span>
+                    <span class="skill-tag">Jetpack</span>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <i class="fas fa-globe skill-icon"></i>
+                <h3 class="skill-title">Web Technologies</h3>
+                <p style="color: var(--text-dim); line-height: 1.6;">
+                    Modern web development with reactive frameworks and 
+                    real-time capabilities.
+                </p>
+                <div class="skill-tags">
+                    <span class="skill-tag">Svelte</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">TypeScript</span>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <i class="fas fa-database skill-icon"></i>
+                <h3 class="skill-title">Backend & Database</h3>
+                <p style="color: var(--text-dim); line-height: 1.6;">
+                    Robust backend systems with high-performance databases and 
+                    real-time synchronization.
+                </p>
+                <div class="skill-tags">
+                    <span class="skill-tag">PostgreSQL</span>
+                    <span class="skill-tag">WebSocket</span>
+                    <span class="skill-tag">REST APIs</span>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <i class="fas fa-terminal skill-icon"></i>
+                <h3 class="skill-title">Scripting & Tools</h3>
+                <p style="color: var(--text-dim); line-height: 1.6;">
+                    Automation scripts, shell scripting, and developer tooling 
+                    for efficient workflows.
+                </p>
+                <div class="skill-tags">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Shell</span>
+                    <span class="skill-tag">Git</span>
+                    <span class="skill-tag">CI/CD</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="projects" id="projects">
+        <div class="section-header">
+            <span class="section-number">03</span>
+            <h2 class="section-title">FEATURED PROJECTS</h2>
+            <p class="section-subtitle">THINGS I'VE BUILT</p>
+        </div>
+
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-image">
+                    <i class="fas fa-download project-icon"></i>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">xydra.core</h3>
+                    <p class="project-description">
+                        High-performance multi-threaded download engine for .NET with 
+                        pause/resume support, automatic retry, chunk-based transfers, 
+                        and comprehensive progress tracking.
+                    </p>
+                    <div class="project-tech">
+                        <span>C#</span>
+                        <span>.NET</span>
+                        <span>Multi-threading</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/amackpro/xydra.core" target="_blank" class="project-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image">
+                    <i class="fas fa-window-maximize project-icon"></i>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">xydra-manager</h3>
+                    <p class="project-description">
+                        WPF download manager with MVVM architecture, real-time 
+                        WebSocket updates, and beautiful light/dark theme support.
+                    </p>
+                    <div class="project-tech">
+                        <span>C#</span>
+                        <span>WPF</span>
+                        <span>WebSocket</span>
+                        <span>MVVM</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/amackpro/xydra-manager" target="_blank" class="project-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image">
+                    <i class="fas fa-boxes project-icon"></i>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">VibeStock</h3>
+                    <p class="project-description">
+                        Cross-platform inventory management system with Rust backend, 
+                        Tauri desktop app, and real-time data synchronization.
+                    </p>
+                    <div class="project-tech">
+                        <span>Rust</span>
+                        <span>Svelte</span>
+                        <span>Tauri</span>
+                        <span>PostgreSQL</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/amackpro/VibeStock" target="_blank" class="project-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image">
+                    <i class="fas fa-mobile-alt project-icon"></i>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">xiaomi_touch</h3>
+                    <p class="project-description">
+                        Touch driver enhancements for Xiaomi devices. Low-level 
+                        system modifications for improved touch responsiveness.
+                    </p>
+                    <div class="project-tech">
+                        <span>C</span>
+                        <span>Linux Kernel</span>
+                        <span>Android</span>
+                        <span>Touch Driver</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/amackpro/xiaomi_touch" target="_blank" class="project-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="tech-stack">
+        <div style="overflow: hidden; padding: 40px 0;">
+            <div class="tech-marquee">
+                <div class="tech-item"><div class="tech-icon"><i class="fab fa-rust"></i></div><span class="tech-name">Rust</span></div>
+                <div class="tech-item"><div class="tech-icon"><i class="fab fa-cuttlefish"></i></div><span class="tech-name">C</span></div>
+                <div class="tech-item"><div class="tech-icon"><i class="fab fa-csharp"></i></div><span class="tech-name">C#</span></div>
+                <div class="tech-item"><div class="tech-icon"><i class="fab fa-python"></i></div><span class="tech-name">Python</span></div>
+                <div class="tech-item"><div class="tech-icon"><i class="fab fa-android"></i></div><span class="tech-name">Android</span></div>
+                <div class="tech-item"><div class="tech-icon"><i class="fab fa-linux"></i></div><span class="tech-name">Linux</span></div>
+                <div class="tech-item"><div class="tech-icon"><i class="fab fa-suse"></i></div><span class="tech-name">.NET</span></div>
+                <div class="tech-item"><div class="tech-icon"><i class="fab fa-js"></i></div><span class="tech-name">Svelte</span></div>
+                <div class="tech-item"><div class="tech-icon"><i class="fas fa-database"></i></div><span class="tech-name">PostgreSQL</span></div>
+                <div class="tech-item"><div class="tech-icon"><i class="fas fa-layer-group"></i></div><span class="tech-name">Tauri</span></div>
+                <!-- Duplicate for seamless loop -->
+                <div class="tech-item"><div class="tech-icon"><i class="fab fa-rust"></i></div><span class="tech-name">Rust</span></div>
+                <div class="tech-item"><div class="tech-icon"><i class="fab fa-cuttlefish"></i></div><span class="tech-name">C</span></div>
+                <div class="tech-item"><div class="tech-icon"><i class="fab fa-csharp"></i></div><span class="tech-name">C#</span></div>
+                <div class="tech-item"><div class="tech-icon"><i class="fab fa-python"></i></div><span class="tech-name">Python</span></div>
+                <div class="tech-item"><div class="tech-icon"><i class="fab fa-android"></i></div><span class="tech-name">Android</span></div>
+                <div class="tech-item"><div class="tech-icon"><i class="fab fa-linux"></i></div><span class="tech-name">Linux</span></div>
+                <div class="tech-item"><div class="tech-icon"><i class="fab fa-suse"></i></div><span class="tech-name">.NET</span></div>
+                <div class="tech-item"><div class="tech-icon"><i class="fab fa-js"></i></div><span class="tech-name">Svelte</span></div>
+                <div class="tech-item"><div class="tech-icon"><i class="fas fa-database"></i></div><span class="tech-name">PostgreSQL</span></div>
+                <div class="tech-item"><div class="tech-icon"><i class="fas fa-layer-group"></i></div><span class="tech-name">Tauri</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="section-header">
+            <span class="section-number">04</span>
+            <h2 class="section-title">GET IN TOUCH</h2>
+            <p class="section-subtitle">LET'S BUILD SOMETHING AMAZING</p>
+        </div>
+
+        <div class="contact-container">
+            <h3 class="contact-title">Let's Connect!</h3>
+            <p class="contact-subtitle">
+                I'm always open to collaborating on interesting projects, especially 
+                in systems programming, Android development, and open source contributions.
+            </p>
+
+            <div class="contact-links">
+                <a href="https://github.com/amackpro" target="_blank" class="contact-link">
+                    <i class="fab fa-github"></i>
+                    <div class="contact-link-text">
+                        <div class="contact-link-label">GitHub</div>
+                        <div class="contact-link-value">@amackpro</div>
+                    </div>
+                </a>
+
+                <a href="https://twitter.com/amack766" target="_blank" class="contact-link">
+                    <i class="fab fa-twitter"></i>
+                    <div class="contact-link-text">
+                        <div class="contact-link-label">Twitter</div>
+                        <div class="contact-link-value">@amack766</div>
+                    </div>
+                </a>
+
+                <a href="mailto:contact@example.com" class="contact-link">
+                    <i class="fas fa-envelope"></i>
+                    <div class="contact-link-text">
+                        <div class="contact-link-label">Email</div>
+                        <div class="contact-link-value">Let's Talk</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">AMACK</div>
+            <p class="footer-text">
+                "First, solve the problem. Then, write the code." - John Johnson
+            </p>
+            
+            <div class="social-links">
+                <a href="https://github.com/amackpro" target="_blank" class="social-link">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://twitter.com/amack766" target="_blank" class="social-link">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/amackpro" class="social-link">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+            </div>
+
+            <p class="footer-bottom">
+                &copy; 2026 Prajwal Kumar. Built with passion and lots of ☕
+            </p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script type="module" src="js/app.js"></script>
 </body>
 </html>
