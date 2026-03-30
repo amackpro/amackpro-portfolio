@@ -65,6 +65,18 @@ section {
     padding: 100px 50px;
 }
 
+/* Touch-friendly defaults */
+a, button, .btn {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+}
+
+/* Prevent horizontal scroll */
+html, body {
+    max-width: 100vw;
+    overflow-x: hidden;
+}
+
 /* Navigation */
 nav {
     position: fixed;
@@ -909,12 +921,23 @@ footer {
 }
 
 @media (max-width: 768px) {
+    :root {
+        --accent: #00f5ff;
+        --accent2: #ff00ff;
+    }
+
     section {
-        padding: 80px 20px;
+        padding: 60px 15px;
+        min-height: auto;
     }
 
     nav {
-        padding: 15px 20px;
+        padding: 12px 15px;
+    }
+
+    .logo {
+        font-size: 1.2rem;
+        letter-spacing: 2px;
     }
 
     .nav-links {
@@ -929,6 +952,7 @@ footer {
         align-items: center;
         gap: 30px;
         transition: right 0.4s ease;
+        z-index: 999;
     }
 
     .nav-links.active {
@@ -936,7 +960,8 @@ footer {
     }
 
     .nav-links a {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
+        letter-spacing: 3px;
     }
 
     .menu-toggle {
@@ -955,25 +980,283 @@ footer {
         transform: rotate(-45deg) translate(7px, -6px);
     }
 
+    .hero {
+        padding-top: 100px;
+        padding-bottom: 60px;
+    }
+
+    .hero-subtitle {
+        font-size: 0.75rem;
+        letter-spacing: 3px;
+    }
+
     .hero-title {
-        font-size: 3rem;
+        font-size: 2.2rem;
+        margin-bottom: 20px;
+    }
+
+    .hero-description {
+        font-size: 1rem;
+        padding: 0 10px;
+        margin-bottom: 25px;
+    }
+
+    .typing-text {
+        font-size: 1rem;
+    }
+
+    .typing-container {
+        height: 40px;
     }
 
     .hero-buttons {
         flex-direction: column;
-        gap: 15px;
+        gap: 12px;
+        padding: 0 20px;
+        width: 100%;
+    }
+
+    .hero-buttons .btn {
+        width: 100%;
+        padding: 14px 25px;
+        font-size: 1rem;
+    }
+
+    .floating-elements {
+        display: none;
+    }
+
+    .scroll-indicator {
+        bottom: 20px;
+    }
+
+    .section-header {
+        margin-bottom: 40px;
+    }
+
+    .section-number {
+        font-size: 4rem;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    .section-title::before {
+        width: 60px;
+        top: -12px;
+    }
+
+    .section-subtitle {
+        font-size: 0.9rem;
+        margin-top: 15px;
+        letter-spacing: 2px;
+    }
+
+    .about {
+        padding-top: 60px;
+    }
+
+    .about-content {
+        gap: 30px;
+    }
+
+    .about-image {
+        max-width: 200px;
+    }
+
+    .about-image-inner {
+        font-size: 4rem;
+    }
+
+    .about-text h3 {
+        font-size: 1.4rem;
+        margin-bottom: 20px;
+    }
+
+    .about-text p {
+        font-size: 1rem;
+        margin-bottom: 20px;
     }
 
     .about-stats {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        margin-top: 25px;
+    }
+
+    .stat-item {
+        padding: 15px 10px;
+    }
+
+    .stat-number {
+        font-size: 1.5rem;
+    }
+
+    .stat-label {
+        font-size: 0.65rem;
+        letter-spacing: 1px;
+    }
+
+    .skills-grid {
         grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .skill-card {
+        padding: 25px;
+    }
+
+    .skill-icon {
+        font-size: 2rem;
+        margin-bottom: 12px;
+    }
+
+    .skill-title {
+        font-size: 1.2rem;
+    }
+
+    .skill-tags {
+        margin-top: 15px;
+        gap: 8px;
+    }
+
+    .skill-tag {
+        padding: 5px 10px;
+        font-size: 0.75rem;
     }
 
     .projects-grid {
         grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .project-card {
+        border-radius: 15px;
+    }
+
+    .project-image {
+        height: 150px;
+    }
+
+    .project-icon {
+        font-size: 3rem;
+    }
+
+    .project-content {
+        padding: 20px;
+    }
+
+    .project-title {
+        font-size: 1.2rem;
+    }
+
+    .project-description {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
+    .project-tech {
+        gap: 6px;
+    }
+
+    .project-tech span {
+        padding: 4px 8px;
+        font-size: 0.7rem;
+    }
+
+    .project-link {
+        width: 38px;
+        height: 38px;
+    }
+
+    .tech-stack {
+        padding: 40px 0;
+    }
+
+    .tech-marquee {
+        gap: 30px;
+    }
+
+    .tech-item {
+        min-width: 80px;
+    }
+
+    .tech-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+
+    .tech-name {
+        font-size: 0.75rem;
+    }
+
+    .contact {
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+
+    .contact-title {
+        font-size: 2rem;
+    }
+
+    .contact-subtitle {
+        font-size: 1rem;
+        margin-bottom: 40px;
     }
 
     .contact-links {
         flex-direction: column;
+        gap: 15px;
+    }
+
+    .contact-link {
+        padding: 18px 20px;
+        min-width: auto;
+        width: 100%;
+    }
+
+    .contact-link i {
+        font-size: 1.5rem;
+    }
+
+    .contact-link-text {
+        text-align: left;
+    }
+
+    .contact-link-label {
+        font-size: 0.8rem;
+    }
+
+    .contact-link-value {
+        font-size: 1rem;
+    }
+
+    footer {
+        padding: 40px 20px;
+    }
+
+    .footer-logo {
+        font-size: 1.5rem;
+    }
+
+    .footer-text {
+        font-size: 0.85rem;
+    }
+
+    .social-links {
+        gap: 15px;
+    }
+
+    .social-link {
+        width: 42px;
+        height: 42px;
+        font-size: 1.1rem;
+    }
+
+    .footer-bottom {
+        font-size: 0.75rem;
     }
 
     .cursor,
@@ -983,5 +1266,36 @@ footer {
 
     body {
         cursor: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 1.8rem;
+    }
+
+    .about-image {
+        max-width: 160px;
+    }
+
+    .about-stats {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+    }
+
+    .stat-item {
+        padding: 12px 6px;
+    }
+
+    .stat-number {
+        font-size: 1.3rem;
+    }
+
+    .stat-label {
+        font-size: 0.6rem;
+    }
+
+    .contact-link {
+        padding: 15px;
     }
 }

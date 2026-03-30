@@ -253,11 +253,28 @@ class PortfolioAnimations {
     }
 }
 
+// Mobile detection
+const isMobile = window.innerWidth <= 768;
+
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
-    new PortfolioAnimations().init();
-    new ParticleSystem('particles-canvas');
-    new CustomCursor();
+    if (!isMobile) {
+        new PortfolioAnimations().init();
+        new ParticleSystem('particles-canvas');
+        new CustomCursor();
+    } else {
+        // Simplified animations for mobile
+        new PortfolioAnimations().init();
+        // Reduced particle count for mobile
+        const ps = new ParticleSystem('particles-canvas');
+        ps.particleCount = 30;
+        ps.init();
+        // Show elements without animation
+        document.querySelectorAll('.hero-subtitle, .hero-title, .hero-description, .typing-container, .hero-buttons, .scroll-indicator').forEach(el => {
+            el.style.opacity = '1';
+            el.style.transform = 'none';
+        });
+    }
     
     // Navigation
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
